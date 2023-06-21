@@ -1,7 +1,56 @@
 .audiobtn {
-  color: #333;
-  font-weight: bold;
+  width: 30%;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 2%;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(19, 18, 18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  margin: 5%;
+}
+
+.modal-content {
   text-align: center;
-  display: inline-block;
-  margin: 30px;
+}
+
+.closeBtn {
+    background-color: #212324;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+  align-items: flex-end;
+}
+
+.modalClose {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.showText {
+    border: 2px solid darkgrey;
+    border-radius: 12px;
+    background: rgb(19, 18, 18);
+    font-size: 2em;
+    padding: 10px;
+    margin-top: 1%;
 }

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+
 import Audio from './Audio';
+
 import './TextToSpeech.css'
 
 const TextToSpeech = () => {
@@ -9,32 +11,30 @@ const TextToSpeech = () => {
         text: '',
     };
     const [isLoading, setIsLoading] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [text, setText] = useState('');
+    const [blob, setBlob] = useState(null);
 
     const validationSchema = Yup.object({
         text: Yup.string()
             .required('Text is required')
-            .max(1000, "Text must be at most 1000 characters long"),
     });
 
     const handleSubmit = (values) => {
         setIsLoading(true);
         const { text } = values;
         const url = `http://localhost:8080/text-to-speech/?text=${encodeURIComponent(text)}`;
+        setText(text);
+        setShowModal(true);
 
         fetch(url)
             .then((response) => response.blob())
             .then((blob) => {
                 setIsLoading(false);
-                const audioPlayer = document.getElementById('audio-player');
-                audioPlayer.defaultPlaybackRate = 1.25;
-                audioPlayer.src = URL.createObjectURL(blob);
-                audioPlayer.play();
+                setBlob(blob);
             })
             .catch((error) => {
                 console.log('Error:', error);
-                const audioPlayer = document.getElementById('audio-player');
-                audioPlayer.src = URL.createObjectURL(error.blob());
-                audioPlayer.play();
             });
     }
 
@@ -55,14 +55,13 @@ const TextToSpeech = () => {
                             rows={12}
                             cols={50}
                             className="text"
-                            maxLength="1000"
                         ></Field>
                     </div>
                     <div className="container">
                         <button id="convert-btn" className="button" type="submit" disabled={isLoading}>
-                            Convert
+                            Play Audio
                         </button>
-                        <Audio />
+                        <Audio showModal={showModal} setShowModal={setShowModal} isLoading={isLoading} text={text} blob={blob} />
                     </div>
                 </div>
             </Form>

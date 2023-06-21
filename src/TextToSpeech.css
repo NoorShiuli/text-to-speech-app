@@ -11,14 +11,14 @@
 }
 
 .text {
-    color: white;
+    color: rgb(104, 103, 103);
     width: 80%;
     height: 100%;
     border: 2px solid darkgrey;
     border-radius: 12px;
     background: rgb(19, 18, 18);
     font-weight: 100;
-    font-size: 3em;
+    font-size: 2.6em;
     padding: 20px;
     margin: 5% 0 3% 7%;
 }
