@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Audio from './Audio';
-import './FormikTTS.css'
+import './TextToSpeech.css'
 
 const TextToSpeech = () => {
     const initialValues = {
@@ -26,6 +26,7 @@ const TextToSpeech = () => {
             .then((blob) => {
                 setIsLoading(false);
                 const audioPlayer = document.getElementById('audio-player');
+                audioPlayer.defaultPlaybackRate = 1.25;
                 audioPlayer.src = URL.createObjectURL(blob);
                 audioPlayer.play();
             })
