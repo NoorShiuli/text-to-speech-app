@@ -1,0 +1,57 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    overflow: hidden;
+}
+
+.darkBackground {
+  background-color: #333;
+  color: #fff;
+}
+
+.text {
+    color: white;
+    width: 80%;
+    height: 100%;
+    border: 2px solid darkgrey;
+    border-radius: 12px;
+    background: rgb(19, 18, 18);
+    font-weight: 100;
+    font-size: 3em;
+    padding: 20px;
+    margin: 5% 0 3% 7%;
+}
+
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.5em;
+    width: 15%;
+    height: 45px;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
