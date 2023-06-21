@@ -13,7 +13,6 @@ const TextToSpeech = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [text, setText] = useState('');
-    const [blob, setBlob] = useState(null);
 
     const validationSchema = Yup.object({
         text: Yup.string()
@@ -31,10 +30,16 @@ const TextToSpeech = () => {
             .then((response) => response.blob())
             .then((blob) => {
                 setIsLoading(false);
-                setBlob(blob);
+                const audioPlayer = document.getElementById('audio-player');
+                audioPlayer.defaultPlaybackRate = 1.25;
+                audioPlayer.src = URL.createObjectURL(blob);
+                audioPlayer.play();
             })
             .catch((error) => {
                 console.log('Error:', error);
+                const audioPlayer = document.getElementById('audio-player');
+                audioPlayer.src = URL.createObjectURL(error.blob());
+                audioPlayer.play();
             });
     }
 
@@ -61,7 +66,7 @@ const TextToSpeech = () => {
                         <button id="convert-btn" className="button" type="submit" disabled={isLoading}>
                             Play Audio
                         </button>
-                        <Audio showModal={showModal} setShowModal={setShowModal} isLoading={isLoading} text={text} blob={blob} />
+                        <Audio showModal={showModal} setShowModal={setShowModal} isLoading={isLoading} text={text}/>
                     </div>
                 </div>
             </Form>

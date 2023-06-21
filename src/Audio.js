@@ -5,17 +5,8 @@ import Spinner from './Spinner';
 
 import './Audio.css'
 
-const useEffectOnce = (effect) => {
-    useEffect(effect, [effect]);
-};
-
 const Audio = (props) => {
-    const { showModal, setShowModal, isLoading, text, blob } = props;
-    const audio = blob ? URL.createObjectURL(blob) : null;
-
-    useEffectOnce(() => {
-
-    })
+    const { showModal, setShowModal, isLoading, text } = props;
 
     return (
         <>
@@ -33,7 +24,7 @@ const Audio = (props) => {
                         className='showText'
                     ></textarea>
                 </div>
-                <audio controls id="audio-player" className="audiobtn" src={audio} hidden={isLoading}>
+                <audio controls id="audio-player" className="audiobtn" hidden={isLoading}>
                     Your browser does not support the audio element.
                 </audio>
                 <div className="modalClose">
